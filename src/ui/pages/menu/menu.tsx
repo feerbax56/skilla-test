@@ -4,7 +4,7 @@ import skilla from '../../../assets/logo/skilla.svg'
 const Menu = () => {
     return (
         <div className={s.menuBlock}>
-            <img src={skilla} alt="logo"/>
+            <img src={skilla} alt="logo" className={s.logoSkilla}/>
         </div>
     );
 };
