@@ -1,6 +1,32 @@
-.contentBlock{
+.contentBlock {
     min-height: 300px;
     max-width: 1440px;
     margin: 0 auto;
-    background-color: bisque;
+}
+
+.addBalance {
+    width: 145px;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 48px;
+    color: #899CB1;
+    font-family: 'SF Pro Display', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 148%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price {
+    color: #122945;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price:hover {
+    color: #0024CB
 }

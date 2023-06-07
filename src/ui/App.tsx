@@ -10,11 +10,9 @@ function App() {
             <div className='menu-container'>
                 <Menu/>
             </div>
-
             <Header/>
             <div className="app-wrapper-content">
                 <Content/>
-
             </div>
         </div>
     );
