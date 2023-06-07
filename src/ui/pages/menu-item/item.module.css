@@ -1,0 +1,42 @@
+.itemBlock {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    color: white;
+    opacity: 0.6;
+}
+
+.itemIcon {
+    margin: 14px 12px 14px 14px;
+}
+
+.itemText {
+    font-family: 'SF Pro Display', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.itemActive {
+    opacity: 1;
+    background-color: #091336;
+    border-left: 3px solid #002CFB;
+}
+
+.activeCircle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FFD500;
+    box-shadow: 0 3px 8px rgba(237, 218, 1, 0.5);
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+.activeCircle::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 100%;
+}
