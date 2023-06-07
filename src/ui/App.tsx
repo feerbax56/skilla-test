@@ -7,7 +7,10 @@ import Content from './pages/content/content';
 function App() {
     return (
         <div className="app-wrapper ">
-            <Menu/>
+            <div className='menu-container'>
+                <Menu/>
+            </div>
+
             <Header/>
             <div className="app-wrapper-content">
                 <Content/>

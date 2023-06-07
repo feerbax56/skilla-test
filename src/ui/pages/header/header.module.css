@@ -1,0 +1,8 @@
+.headerBlock{
+    width: 1680px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aqua;
+}

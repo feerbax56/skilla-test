@@ -5,11 +5,14 @@
   grid-template-areas:
     "m h"
     "m c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 10em 1fr;
-  gap: 10px;
+  grid-template-rows: 64px 1fr;
+  grid-template-columns: 240px 1fr;
 }
 
 .app-wrapper-content {
   grid-area: c;
+}
+
+.menu-container {
+  grid-area: m;
 }
