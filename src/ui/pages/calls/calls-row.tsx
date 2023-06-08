@@ -13,20 +13,26 @@ type PropsType = {
     time: number
 }
 
-const CallsRow = (props: PropsType) => {
+const CallsRow: React.FC<PropsType> = ({
+                                           key,
+                                           in_out,
+                                           date,
+                                           person_avatar,
+                                           from_number,
+                                           source,
+                                           status,
+                                           time
+                                       }) => {
     return (
-        <div key={props.key}>
-            <TableRow>
-                <TableCell align="left">{props.in_out}</TableCell>
-                <TableCell align="left">{props.date}</TableCell>
-                <TableCell align="left">{props.person_avatar}</TableCell>
-                <TableCell align="left">{props.from_number}</TableCell>
-                <TableCell align="left">{props.source}</TableCell>
-                <TableCell align="left">{props.status}</TableCell>
-                <TableCell align="left">{props.time}</TableCell>
-            </TableRow>
-        </div>
+        <TableRow key={key}>
+            <TableCell align="left">{in_out}</TableCell>
+            <TableCell align="left">{date}</TableCell>
+            <TableCell align="left">{person_avatar}</TableCell>
+            <TableCell align="left">{from_number}</TableCell>
+            <TableCell align="left">{source}</TableCell>
+            <TableCell align="left">{status}</TableCell>
+            <TableCell align="left">{time}</TableCell>
+        </TableRow>
     );
 };
-
 export default CallsRow;
