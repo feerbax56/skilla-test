@@ -2,7 +2,7 @@ import {instance} from './instance';
 
 
 export const callsAPI = {
-    getCallsList(date_start: string, date_end: string, params: CallFilter) {
+    getCallsList(date_start: string, date_end: string, params?: CallFilter) {
         return instance.post<TotalCallsType>(`getList?date_start=${date_start}&date_end=${date_end}`, {
             params,
         })
