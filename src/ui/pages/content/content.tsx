@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './content.module.css'
-import Cals from '../calls/cals';
+import Calls from '../calls/calls';
 import {IconButton} from '@mui/material';
 import {ControlPoint} from '@mui/icons-material';
 import Filters from '../filters/filters';
@@ -23,12 +23,12 @@ const Content = () => {
                 </div>
 
             </div>
-            <div>
+            <div className={s.filterBlock}>
                 <Search/>
                <Filters/>
             </div>
             <div>
-                <Cals/>
+                <Calls/>
             </div>
         </div>
     );

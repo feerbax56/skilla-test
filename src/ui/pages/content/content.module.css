@@ -30,3 +30,8 @@
 .price:hover {
     color: #0024CB
 }
+
+.filterBlock {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Cals = () => {
+
+
+
+
+
+const Calls = () => {
     return (
         <div>
             <div>шапка</div>
@@ -9,4 +14,4 @@ const Cals = () => {
     );
 };
 
-export default Cals;
+export default Calls;
