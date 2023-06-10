@@ -1,4 +1,4 @@
-import {CallsType, TotalCallsType} from '../../dal/callsAPI';
+import {TotalCallsType} from '../../dal/callsAPI';
 
 
 export type ActionsCallsTypes =
@@ -13,18 +13,20 @@ let initialState: TotalCallsType = {
 const callsReducer = (state: TotalCallsType = initialState, action: ActionsCallsTypes): TotalCallsType => {
     switch (action.type) {
         case 'GET-CALLS':
+            console.log('rrr')
             return {
-                ...state,
-                results: action.results
+                results: action.data.results,
+                total_rows: action.data.total_rows
             }
         default:
+            console.log('def')
             return state;
     }
 }
 export default callsReducer
 
-export const getCalls = (results: CallsType[]) => {
-    return {
-        type: 'GET-CALLS', results
+export const getCalls = (data: TotalCallsType) => ({
+        type: 'GET-CALLS', data
     } as const
-}
+)
+
