@@ -1,5 +1,6 @@
-import {TotalCallsType} from '../../dal/callsAPI';
-
+import {CallFilter, callsAPI, TotalCallsType} from '../../dal/callsAPI';
+import {AppThunk} from '../store';
+import {AxiosError} from 'axios';
 
 export type ActionsCallsTypes =
     ReturnType<typeof getCalls>
@@ -25,8 +26,20 @@ const callsReducer = (state: TotalCallsType = initialState, action: ActionsCalls
 }
 export default callsReducer
 
-export const getCalls = (data: TotalCallsType) => ({
-        type: 'GET-CALLS', data
-    } as const
-)
+export const getCalls = (data: TotalCallsType) =>
+    ({type: 'GET-CALLS', data} as const)
+
+export const getCallsPackTC =
+    (date_start: string, date_end: string, params?: CallFilter): AppThunk =>
+        (dispatch) => {
+            callsAPI
+                .getCallsList(date_start, date_end, params)
+                .then((res) => {
+                    dispatch(getCalls(res.data));
+                })
+                .catch((err: AxiosError<{ error: string }>) => {
+                    console.log(err, 'error')
+                });
+        };
+
 

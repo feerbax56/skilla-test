@@ -50,7 +50,7 @@ export type CallsType = {
 }
 
 
-type CallFilter = {
+export type CallFilter = {
     date_start: string; // Format: YYYY-MM-DD
     date_end: string; // Format: YYYY-MM-DD
     in_out?: 0 | 1; // 0 - outgoing call, 1 - incoming call
