@@ -27,7 +27,7 @@ const CallsRow: React.FC<PropsType> = ({
         <TableRow key={key}>
             <TableCell align="left">{in_out}</TableCell>
             <TableCell align="left">{date}</TableCell>
-            <TableCell align="left">{person_avatar}</TableCell>
+            <TableCell align="left"><img src={person_avatar} alt="avatarPerson"/></TableCell>
             <TableCell align="left">{from_number}</TableCell>
             <TableCell align="left">{source}</TableCell>
             <TableCell align="left">{status}</TableCell>
