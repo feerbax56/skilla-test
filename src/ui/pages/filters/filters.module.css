@@ -1,3 +1,15 @@
-.filtersBlock{
+.filtersBlock {
     display: flex;
+
+}
+
+.filterDiv {
+    margin-left: 32px;
+    color: #5E7793;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.filterDiv:hover{
+    color: #002CFB;
 }

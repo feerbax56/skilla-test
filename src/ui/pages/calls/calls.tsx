@@ -16,13 +16,24 @@ const Calls = () => {
     const callsList = useAppSelector((state) => state.calls.results);
     const dateStart = useAppSelector(state => state.date.date_start)
     const dateEnd = useAppSelector(state => state.date.date_end)
+    const callType = useAppSelector(state => state.date.callType)
+
 
     useEffect(() => {
         dispatch(getCallsPackTC(dateStart, dateEnd))
     }, [dateStart, dateEnd]);
 
+    const callListFiltered = React.useMemo(() => {
+        if (callType === 'входящий') {
+            return callsList.filter(row => row.in_out === 1);
+        } else if (callType === 'исходящий') {
+            return callsList.filter(row => row.in_out === 0);
+        } else {
+            return callsList;
+        }
+    }, [callType, callsList]);
 
-    const tableBody = callsList.map((row) => (
+    const tableBody = callListFiltered.map((row) => (
         <CallsRow
             key={row.id}
             in_out={row.in_out}

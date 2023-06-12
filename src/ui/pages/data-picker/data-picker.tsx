@@ -97,7 +97,7 @@ const DataPicker = () => {
                 onClick={handleClick}
             >
                 <CalendarToday/>
-                <span>{daysAgo}
+                <span className={s.data}>{daysAgo}
                     <span> {`${plural(daysAgo, {one: 'день', few: 'дня', many: 'дней'})}`}</span>
                 </span>
             </Button>
