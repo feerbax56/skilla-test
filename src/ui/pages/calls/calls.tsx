@@ -14,16 +14,12 @@ import TableCell from '@mui/material/TableCell';
 const Calls = () => {
     const dispatch = useAppDispatch();
     const callsList = useAppSelector((state) => state.calls.results);
-
-
-    const daysAgo = 3;
-    const dateStart = new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10);
-    // дата сегодня в строку
-    const dateEnd = new Date().toISOString().slice(0, 10);
+    const dateStart = useAppSelector(state => state.date.date_start)
+    const dateEnd = useAppSelector(state => state.date.date_end)
 
     useEffect(() => {
         dispatch(getCallsPackTC(dateStart, dateEnd))
-    }, []);
+    }, [dateStart, dateEnd]);
 
 
     const tableBody = callsList.map((row) => (

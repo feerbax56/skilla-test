@@ -15,13 +15,11 @@ let initialState: TotalCallsType = {
 const callsReducer = (state: TotalCallsType = initialState, action: ActionsCallsTypes): TotalCallsType => {
     switch (action.type) {
         case 'GET-CALLS':
-            console.log('rrr')
             return {
                 results: action.data.results,
                 total_rows: action.data.total_rows
             }
         default:
-            console.log('def')
             return state;
     }
 }
