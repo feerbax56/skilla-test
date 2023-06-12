@@ -13,6 +13,7 @@ export const callsAPI = {
 export type TotalCallsType = {
     total_rows: string
     results: CallsType[]
+
 }
 export type CallsType = {
     id: number;

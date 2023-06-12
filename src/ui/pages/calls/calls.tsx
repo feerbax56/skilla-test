@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {getCallsPackTC} from '../../../bll/reducers/calls-reducer';
 import {useAppDispatch, useAppSelector} from '../../../bll/store';
 import CallsRow from './calls-row';
-import s from './calls.module.css'
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -16,8 +15,11 @@ const Calls = () => {
     const dispatch = useAppDispatch();
     const callsList = useAppSelector((state) => state.calls.results);
 
-    const dateStart = '2023-03-01'
-    const dateEnd = '2023-05-01'
+
+    const daysAgo = 3;
+    const dateStart = new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10);
+    // дата сегодня в строку
+    const dateEnd = new Date().toISOString().slice(0, 10);
 
     useEffect(() => {
         dispatch(getCallsPackTC(dateStart, dateEnd))

@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 45px;
 }
 
 .price {
@@ -34,4 +35,13 @@
 .filterBlock {
     display: flex;
     justify-content: space-between;
+    min-height: 48px;
+    align-items: center;
+}
+
+.dataPickerBlock {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 80px;
 }

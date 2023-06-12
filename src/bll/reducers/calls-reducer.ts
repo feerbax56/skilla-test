@@ -8,7 +8,8 @@ export type ActionsCallsTypes =
 
 let initialState: TotalCallsType = {
     total_rows: '0',
-    results: []
+    results: [],
+
 }
 
 const callsReducer = (state: TotalCallsType = initialState, action: ActionsCallsTypes): TotalCallsType => {

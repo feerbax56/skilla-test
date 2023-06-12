@@ -1,0 +1,21 @@
+.dataPickerBlock{
+
+}
+
+.dataPickerBlock button{
+    padding: 0;
+    border: none;
+    font: inherit;
+    color:  #ADBFDF;
+    background-color: transparent;
+    cursor: pointer;
+}
+.dataPickerBlock button:hover{
+    color: #002CFB;
+}
+
+.iconCalendar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

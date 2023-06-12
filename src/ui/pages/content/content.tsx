@@ -5,11 +5,12 @@ import {IconButton} from '@mui/material';
 import {ControlPoint} from '@mui/icons-material';
 import Filters from '../filters/filters';
 import Search from '../search/search';
+import DataPicker from '../data-picker/data-picker';
 
 const Content = () => {
     return (
         <div className={s.contentBlock}>
-            <div>
+            <div className={s.dataPickerBlock}>
                 <div className={s.addBalance}>
                     Баланс:
                     <span className={s.price}> 272 ₽
@@ -19,13 +20,13 @@ const Content = () => {
                     </span>
                 </div>
                 <div>
-                    data picker
+                    <DataPicker/>
                 </div>
 
             </div>
             <div className={s.filterBlock}>
                 <Search/>
-               <Filters/>
+                <Filters/>
             </div>
             <div>
                 <Calls/>
