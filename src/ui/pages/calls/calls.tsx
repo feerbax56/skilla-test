@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {getCallsPackTC} from '../../../bll/reducers/calls-reducer';
 import {useAppDispatch, useAppSelector} from '../../../bll/store';
 import CallsRow from './calls-row';
@@ -33,18 +33,21 @@ const Calls = () => {
         }
     }, [callType, callsList]);
 
-    const tableBody = callListFiltered.map((row) => (
-        <CallsRow
-            key={row.id}
-            in_out={row.in_out}
-            date={row.date}
-            person_avatar={row.person_avatar}
-            from_number={row.from_number}
-            source={row.source}
-            status={row.status}
-            time={row.time}
-        />
-    ));
+    const tableBody = useMemo(() =>
+            callListFiltered.map((row) => (
+                <CallsRow
+                    key={row.id}
+                    in_out={row.in_out}
+                    date={row.date}
+                    person_avatar={row.person_avatar}
+                    from_number={row.from_number}
+                    source={row.source}
+                    status={row.status}
+                    time={row.time}
+                />
+            )),
+        [callListFiltered]
+    );
     return (
         <TableContainer component={Paper}>
             <Table sx={{minWidth: 650}} aria-label="simple table">

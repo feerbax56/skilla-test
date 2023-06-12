@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import s from './filters.module.css'
-import {KeyboardArrowDown} from '@mui/icons-material';
+import {Close, KeyboardArrowDown} from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -13,18 +13,25 @@ const Filters = () => {
     const dispatch = useAppDispatch();
     const [callType, setCallType] = React.useState<FiltersType['callType']>('все');
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleChange = useCallback((event: SelectChangeEvent) => {
         setCallType(event.target.value as FiltersType['callType']);
-    };
+    }, []);
+
 
     useEffect(() => {
         dispatch(changeTypeCall(callType))
     }, [callType]);
 
+    const resetFilters = () => {
+        setCallType('все')
+        dispatch(changeTypeCall('все'))
+    }
+
     return (
         <div className={s.filtersBlock}>
+            {callType !== 'все' && <div className={s.filterDiv} onClick={resetFilters}>сбросить фильтр <Close/></div>}
             <div className={s.filterDiv}>
-                <Box sx={{minWidth: 120}}>
+                <Box>
                     <FormControl fullWidth>
                         <Select
                             value={callType}
