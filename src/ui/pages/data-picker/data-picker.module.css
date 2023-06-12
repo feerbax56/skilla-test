@@ -26,3 +26,6 @@
     flex-direction: column;
     align-items: flex-start;
 }
+.dataSave input{
+    border: none;
+}

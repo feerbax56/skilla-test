@@ -8,12 +8,13 @@ import {useAppDispatch} from '../../../bll/store';
 import {getDate} from '../../../bll/reducers/filter-reducer';
 import {plural} from '../../../utils/utils';
 
+
 const DataPicker = () => {
     const dispatch = useAppDispatch();
     const [daysAgo, setDaysAgo] = useState<number>(3);
     const [dateEnd, setDateEnd] = useState<string>(new Date().toISOString().slice(0, 10));
     const [dateStart, setDateStart] = useState<string>(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10));
-
+// загрузка первичных данных за 3 дня
     useEffect(() => {
         dispatch(getDate(dateStart, dateEnd))
     }, [dateStart, dateEnd]);
@@ -31,49 +32,61 @@ const DataPicker = () => {
     const DayBack = () => {
         if (daysAgo > 1) {
             setDaysAgo(daysAgo - 1);
+            setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
         }
     }
     const DayForward = () => {
         setDaysAgo(daysAgo + 1);
+        setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
     }
 
     const setTreeDays = () => {
         setDaysAgo(3);
+        setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
     }
     const setWeekDays = () => {
         setDaysAgo(7);
+        setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
     }
     const setMonthDays = () => {
         setDaysAgo(30);
+        setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
     }
     const setYearDays = () => {
         setDaysAgo(365);
+        setDateStart(new Date(Date.now() - (daysAgo * 24 * 60 * 60 * 1000)).toISOString().slice(0, 10))
     }
 
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setStartDate(event.target.value);
+    const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const selectedDate = event.target.value ? new Date(event.target.value) : null;
+        const today = new Date();
+        const startDate = selectedDate ? new Date(Math.min(selectedDate.getTime(), today.getTime())) : today;
+        setStartDate(startDate.toISOString().slice(0, 10));
     };
-    const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEndDate(event.target.value);
+    const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const selectedDate = event.target.value ? new Date(event.target.value) : null;
+        const today = new Date();
+        const endDate = selectedDate ? new Date(Math.min(selectedDate.getTime(), today.getTime())) : today;
+        setEndDate(endDate.toISOString().slice(0, 10));
     };
     const handleSave = () => {
         const formattedStartDate = formatDate(startDate);
         const formattedEndDate = formatDate(endDate);
         setDateStart(formattedStartDate)
         setDateEnd(formattedEndDate)
-        setDaysAgo((new Date(formattedEndDate).getTime() - new Date(formattedStartDate).getTime()) / (1000 * 3600 * 24))
-        console.log(`Start date: ${formattedStartDate}, End date: ${formattedEndDate}`);
+        const Days = (new Date(formattedEndDate).getTime() - new Date(formattedStartDate).getTime()) / (1000 * 3600 * 24)
+        setDaysAgo(Days === 0 ? 1 : Days)
     };
     const formatDate = (date: string) => {
-        const [year, month, day] = date.split('-');
+        const [day, month, year] = date.split('-');
         return `${day}-${month}-${year}`;
     };
 
     return (
         <div className={s.dataPickerBlock}>
-            <Button onClick={DayBack}>
+            <Button onClick={DayBack} disabled={daysAgo === 1}>
                 <KeyboardArrowLeft/>
             </Button>
             <Button
@@ -120,9 +133,11 @@ const DataPicker = () => {
                             Указать даты
                         </div>
                         <div>
-                            <input type="date" id="startDate" value={startDate} onChange={handleStartDateChange}/>
+                            <input type="date" id="startDate" max={endDate} value={startDate}
+                                   onChange={handleStartDateChange}/>
                             <label htmlFor="endDate">-</label>
-                            <input type="date" id="endDate" value={endDate} onChange={handleEndDateChange}/>
+                            <input type="date" id="endDate" min={startDate} value={endDate}
+                                   onChange={handleEndDateChange}/>
                             <Button onClick={() => {
                                 handleClose();
                                 handleSave()
@@ -130,9 +145,7 @@ const DataPicker = () => {
                                 <CalendarToday/>
                             </Button>
                         </div>
-
                     </div>
-
                 </MenuItem>
             </Menu>
         </div>
