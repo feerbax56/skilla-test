@@ -5,7 +5,7 @@
 }
 
 .buttonPause{
-    background-color: #FFFFFF;
+    color: #002CFB;
     border-radius: 50%;
     min-height: 24px;
     min-width: 24px;
@@ -13,6 +13,8 @@
     margin: 12px;
     padding: 0;
     border: none;
+    cursor: pointer;
+    background-color: #FFFFFF;
 }
 
 .downloadBtn {

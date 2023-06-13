@@ -46,7 +46,7 @@ const AudioPlayer: React.FC<PropsType> = ({record, partnershipId}) => {
         if (audioSrc) {
             const link = document.createElement('a');
             link.href = audioSrc;
-            link.download = 'recording.mp3';
+            link.download = 'record.mp3';
             document.body.appendChild(link);
             link.click();
             setTimeout(() => {
@@ -60,7 +60,7 @@ const AudioPlayer: React.FC<PropsType> = ({record, partnershipId}) => {
             {audioSrc && (
                 <span className={s.audioBlock}>
                      <button onClick={isPlaying ? handlePause : handlePlay} className={s.buttonPause}>
-                        {isPlaying ? <Pause/> : <PlayArrow/>}
+                        {isPlaying ? <Pause /> : <PlayArrow/>}
                     </button>
                      <audio
                          src={audioSrc}

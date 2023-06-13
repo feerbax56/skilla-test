@@ -8,7 +8,8 @@ export const callsAPI = {
         })
     },
     getRecord(record: string, partnership_id: string){
-        return instance.post(`getRecord?record=${record}&partnership_id=${partnership_id}`)
+        return instance.post(`getRecord?record=${record}&partnership_id=${partnership_id}`,
+            )
 
     }
 
