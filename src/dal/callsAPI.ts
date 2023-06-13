@@ -6,6 +6,10 @@ export const callsAPI = {
         return instance.post<TotalCallsType>(`getList?date_start=${date_start}&date_end=${date_end}`, {
             params,
         })
+    },
+    getRecord(record: string, partnership_id: string){
+        return instance.post(`getRecord?record=${record}&partnership_id=${partnership_id}`)
+
     }
 
 }

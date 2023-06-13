@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import failCall from '../../../../src/assets/calls/fail.svg'
 import successCall from '../../../../src/assets/calls/success.svg'
 import outCall from '../../../../src/assets/calls/out.svg'
-
+import AudioPlayer from '../audio-player/audio';
+import {Close} from '@mui/icons-material';
+import s from './calls.module.css'
 type PropsType = {
     key: number,
     in_out: number,
@@ -13,7 +15,9 @@ type PropsType = {
     from_number: string,
     source: string,
     status: string,
-    time: number
+    time: number,
+    record: string,
+    partnershipId: string
 }
 
 function secondsToTime(seconds: number): string | undefined {
@@ -46,14 +50,24 @@ const CallsRow: React.FC<PropsType> = ({
                                            from_number,
                                            source,
                                            status,
-                                           time
+                                           time,
+                                           record,
+                                           partnershipId,
                                        }) => {
 
     const typeCall = status === 'Не дозвонился' ? failCall : in_out === 1 ? successCall : outCall
     const timeCall = date.slice(10, 16)
+    const [audioPlayer, setAudioPlayer] = useState(false)
 
+    const closePlayer = () => {
+        setAudioPlayer(!audioPlayer)
+    }
 
     const lenghtTime = secondsToTime(time)
+    const audioBlock = audioPlayer ?
+        (<div className={s.audioPlayer}><AudioPlayer record={record} partnershipId={partnershipId}/><Close onClick={closePlayer} className={s.activeBtn}/></div>)
+        : (<div onClick={closePlayer} className={s.activeBtn}>{lenghtTime}</div>)
+
 
     return (
         <TableRow key={key}>
@@ -65,7 +79,7 @@ const CallsRow: React.FC<PropsType> = ({
             <TableCell align="left">
                 <button>Распознать</button>
             </TableCell>
-            <TableCell align="right">{lenghtTime}</TableCell>
+            <TableCell align="right">{audioBlock}</TableCell>
         </TableRow>
     );
 };

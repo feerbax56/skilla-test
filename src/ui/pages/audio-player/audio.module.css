@@ -1,0 +1,32 @@
+.audioBlock {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.buttonPause{
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    min-height: 24px;
+    min-width: 24px;
+    display: flex;
+    margin: 12px;
+    padding: 0;
+    border: none;
+}
+
+.downloadBtn {
+    display: flex;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: #ADBFDF;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 12px;
+}
+
+.audioBlock button:hover {
+    color: #002CFB;
+}
+

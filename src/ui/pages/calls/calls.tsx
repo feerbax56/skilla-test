@@ -44,6 +44,8 @@ const Calls = () => {
                     source={row.source}
                     status={row.status}
                     time={row.time}
+                    partnershipId={row.partnership_id}
+                    record = {row.record}
                 />
             )),
         [callListFiltered]

@@ -1,3 +1,22 @@
 .callsBody {
     background-color: #FFFFFF;
 }
+
+.audioPlayer{
+    display: flex;
+    background-color:  #EAF0FA;
+    border-radius: 48px;
+    min-height: 48px;
+    min-width: 352px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.activeBtn{
+    cursor: pointer;
+    color: #ADBFDF;
+}
+
+.activeBtn:hover{
+    color: #002CFB;
+}
